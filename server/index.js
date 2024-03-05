@@ -1,5 +1,5 @@
 const express = require("express");
-//const path = require("path");
+const path = require("path");
 const app = express();
 const http = require("http")
 const server = http.createServer(app);
@@ -16,7 +16,7 @@ app.use(cors());
 
 const PORT = process.env.PORT || 3001;
 
-//app.use('/', express.static(path.join(__dirname, '..','client', 'build')))
+app.use('/', express.static(path.join(__dirname,'client', 'build')))
 
 io.on("connection", (socket) => {
 	socket.emit("me", socket.id);
